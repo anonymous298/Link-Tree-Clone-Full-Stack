@@ -9,6 +9,7 @@ const Navbar = () => {
     const [lastScrollY, setLastScrollY] = useState(0)
     const [active, setActive] = useState('home');
 
+    // console.log(session)
     useEffect(() => {
         const controlNavbar = () => {
             if (window.scrollY > 5) { // 👈 adjust height here
@@ -24,13 +25,14 @@ const Navbar = () => {
             }
             setLastScrollY(window.scrollY)
         }
-
+        
         window.addEventListener("scroll", controlNavbar)
-
+        
         return () => {
             window.removeEventListener("scroll", controlNavbar)
         }
     }, [lastScrollY])
+    
 
     const updateActive = (currentTab) => {
         setActive(currentTab);
@@ -44,7 +46,7 @@ const Navbar = () => {
                     <ul className='flex gap-x-10'>
                         <li><Link onClick={() => updateActive('home')} href={'/'} className={`text-[17px] font-semibold decoration-[3px] ${active === 'home'?'underline':''}`}>Home</Link></li>
                         {session && <li><Link onClick={() => updateActive('dashboard')} href={'/dashboard'} className={`text-[17px] font-semibold  transition-all decoration-[3px] ${active === 'dashboard'?'underline':''} `}>Dashboard</Link></li>}
-                        {session && <li><Link onClick={() => updateActive('home')} href={'/'} className={`text-[17px] font-semibold transition-all decoration-[3px] ${active === 'page'?'underline':''} `}>Your Linktree</Link></li>}
+                        {session && <li><Link onClick={() => updateActive('page')} href={`/users/${session.user.username}`} className={`text-[17px] font-semibold transition-all decoration-[3px] ${active === 'page'?'underline':''} `}>Your Linktree</Link></li>}
                     </ul>
                 </div>
 
