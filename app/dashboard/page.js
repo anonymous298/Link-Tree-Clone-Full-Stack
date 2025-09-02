@@ -8,7 +8,7 @@ import { updateUserData } from '@/actions/serverActions'
 import { Toaster, toast } from 'react-hot-toast'
 
 const Page = () => {
-    const { data: session } = useSession();
+    const { data: session, status  } = useSession();
     const router = useRouter();
     const [formValues, setFormValues] = useState({});
     const [links, setLinks] = useState([])
@@ -57,7 +57,7 @@ const Page = () => {
 
 
 
-    }, [session])
+    }, [status , router])
 
     useEffect(() => {
         if (currentUser?.links && currentUser.links.length > 0) {
