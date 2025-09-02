@@ -16,7 +16,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const controlNavbar = () => {
-      if (window.scrollY > 5) {
+      if (window.scrollY > 2) {
         if (window.scrollY > lastScrollY) {
           setShow(false);
         } else {
@@ -195,11 +195,11 @@ const Navbar = () => {
           </ul>
 
           {/* Mobile Search */}
-          {session && <div className="flex items-center gap-2 bg-[#1e2d1a] rounded-full max-[340px]:rounded-2xl shadow-inner p-1 px-3 max-[340px]:flex-col">
+          {session && <div className="flex items-center gap-2 bg-[#1e2d1a] rounded-full max-[340px]:rounded-2xl shadow-inner p-1 px-3 max-[400px]:flex-col">
             <input
               type="text"
               placeholder="Search..."
-              className="flex-1 max-[340px]:w-full bg-[#154e07] text-white placeholder-[#a0a0a0] outline-none px-4 max-[400px]:px-1 py-2 rounded-full max-[340px]:rounded-[10px] shadow-inner"
+              className="flex-1 max-[400px]:w-full bg-[#154e07] text-white placeholder-[#a0a0a0] outline-none px-4 max-[400px]:px-1 py-2 rounded-full max-[340px]:rounded-[10px] shadow-inner"
               onChange={onChange}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -209,7 +209,7 @@ const Navbar = () => {
               }}
             />
             <button
-              className="cursor-pointer max-[340px]:w-full bg-gradient-to-r from-[#00ff73] via-[#70ffbc] to-[#3fcfff] text-white font-semibold px-6 max-[400px]:px-3 py-2 rounded-full max-[340px]:rounded-[10px] shadow-lg hover:scale-105 transition-transform duration-300"
+              className="cursor-pointer max-[400px]:w-full bg-gradient-to-r from-[#00ff73] via-[#70ffbc] to-[#3fcfff] text-white font-semibold px-6 max-[400px]:px-3 py-2 rounded-full max-[340px]:rounded-[10px] shadow-lg hover:scale-105 transition-transform duration-300"
               onClick={() => {
                 router.push(`/users/${searchValue}`);
                 setMenuOpen(false);
