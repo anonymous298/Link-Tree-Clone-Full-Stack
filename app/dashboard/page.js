@@ -21,6 +21,8 @@ const Page = () => {
     // console.log(formValues)
     // console.log(session.user.email)
 
+    console.log(currentUser)
+
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -29,12 +31,12 @@ const Page = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(session.user)
+                body: JSON.stringify({'username' : session.user.username})
             })
 
             const data = await res.json();
             setCurrentUser(data);
-            setFormValues({ 'username': data.username, 'fullname': data.fullname ? data.fullname : '' })
+            setFormValues({ 'username': data.username, 'fullname': data.fullname ? data.fullname : '', 'profilepic' : data.profilepic ? data.profilepic : '' })
             setLinks(data.links)
         }
 
@@ -98,7 +100,7 @@ const Page = () => {
         const finalData = { ...formValues }
         finalData['links'] = links
         finalData['user'] = currentUser
-        console.log('submitting data to updation', finalData)
+        // console.log('submitting data to updation', finalData)
 
         updateUserData(finalData)
 
@@ -149,9 +151,9 @@ const Page = () => {
     return (
         <div className='min-h-screen flex justify-center items-center mt-22'>
             <div><Toaster /></div>
-            <div className="container flex justify-evenly p-2">
+            <div className="container flex justify-evenly p-2 max-[1022px]:flex-col items-center">
                 {/* Illustration */}
-                <div className="w-[50%] max-[800px]:w-[70%] self-center">
+                <div className="w-[50%] max-[1022px]:hidden self-center">
                     <Image
                         src="/complete-form.svg"
                         alt="Login Illustration"
@@ -161,7 +163,7 @@ const Page = () => {
                     />
                 </div>
 
-                <div className="w-[50%] bg-white shadow-lg rounded-2xl p-8">
+                <div className="w-[50%] bg-white shadow-lg rounded-2xl p-8 max-[1022px]:w-[85%]">
                     <h2 className="text-2xl font-semibold mb-6 text-center">Create Your Linktree</h2>
 
                     <div className="space-y-5">
@@ -190,6 +192,19 @@ const Page = () => {
                                 onChange={onChange}
                                 name='username'
                                 value={formValues.username ? formValues.username : ''}
+                            />
+                        </div>
+
+                        {/* ProfilePic */}
+                        <div>
+                            <label className="block text-gray-700 mb-1">Profile Picture</label>
+                            <input
+                                type="text"
+                                placeholder="Enter URL for profile picture"
+                                className="w-full px-4 py-2 border rounded-lg bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                                onChange={onChange}
+                                name='profilepic'
+                                value={formValues.profilepic ? formValues.profilepic : ''}
                             />
                         </div>
 
@@ -235,13 +250,13 @@ const Page = () => {
                         {links[0] && links.map((val, idx) => {
                             return (
                                 <div key={idx} className='flex justify-between gap-x-4'>
-                                    <div className='flex gap-x-3 w-full'>
+                                    <div className='flex gap-x-3 w-full max-[600px]:flex-col '>
                                         <input
                                             value={val.title ? val.title : ''}
                                             type="text"
                                             placeholder='Enter Social Media Name'
                                             name='title'
-                                            className=" px-2 w-[50%] py-2 border rounded-lg bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                                            className=" px-2 w-[50%] max-[600px]:w-full py-2 border rounded-lg bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
                                             onChange={(e) => {
                                                 const newLinks = [...links]
                                                 console.log(e.target.value)
@@ -256,7 +271,7 @@ const Page = () => {
                                             type="text"
                                             name='url'
                                             placeholder='Enter Social Media Link'
-                                            className="px-2 w-[50%] py-2 border rounded-lg bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                                            className="px-2 w-[50%] max-[600px]:w-full py-2 border rounded-lg bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400"
                                             onChange={(e) => {
                                                 // console.log(val)
                                                 const newLinks = [...links]
@@ -267,7 +282,7 @@ const Page = () => {
                                     </div>
 
                                     <button type='button' onClick={() => deleteLink(idx)}>
-                                        <img src="/delete.png" alt="delete" className='size-5 cursor-pointer' />
+                                        <img src="/delete.png" alt="delete" className='size-5 cursor-pointer max-[600px]:size-8' />
                                     </button>
                                 </div>
                             )
