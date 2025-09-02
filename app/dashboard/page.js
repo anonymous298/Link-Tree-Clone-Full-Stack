@@ -126,8 +126,10 @@ const Page = () => {
         else {
             toast.success('Successfully Updated You Linktree')
             setTimeout(() => {
-                router.push(`/users/${session.user.username}`)
-            }, 3000);
+                window.location.href = `/users/${session.user.username}`; // full reload
+                // router.push(`/users/${session.user.username}`)
+
+            }, 2000);
         }
 
         // setTimeout(() => {
