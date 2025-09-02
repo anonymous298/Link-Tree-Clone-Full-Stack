@@ -17,7 +17,7 @@ export default function UserNotFound() {
           User Not Found
         </h2>
         <p className="relative text-lg md:text-xl text-white/80 mb-6 text-center">
-          Oops! The user you're looking for doesn’t exist or has been removed.
+          Oops! The user you&apos;re looking for doesn&apos;t exist or has been removed.
         </p>
         <Link
           href="/"
