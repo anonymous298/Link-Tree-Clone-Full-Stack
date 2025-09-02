@@ -41,14 +41,15 @@ const UserLinktreePage = ({ username }) => {
         //     console.log(data)
         // }
 
-        if (!session) {
-            router.push('/')
-        }
+        // if (!session) {
+        //     router.push('/')
+        // }
 
-        else {
-            fetchUser(username)
-            // temp()
-        }
+        // else {
+        //     fetchUser(username)
+        //     // temp()
+        // }
+        fetchUser(username)
     }, [status, router])
 
     // console.log(session.user.image)
