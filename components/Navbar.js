@@ -106,6 +106,12 @@ const Navbar = () => {
               placeholder="Search..."
               className="flex-1 bg-[#154e07] text-white placeholder-[#a0a0a0] outline-none px-4 py-2 rounded-full shadow-inner"
               onChange={onChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    router.push(`/users/${searchValue}`)
+                    setMenuOpen(false)
+                }
+              }}
             />
             <button
               className="cursor-pointer bg-gradient-to-r from-[#ff13ff] via-[#ff66ff] to-[#ff99ff] text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
