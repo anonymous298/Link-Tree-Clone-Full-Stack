@@ -249,7 +249,7 @@ const Page = () => {
 
                         {links[0] && links.map((val, idx) => {
                             return (
-                                <div key={idx} className='flex justify-between gap-x-4'>
+                                <div key={idx} className='flex justify-between gap-x-4 items-center'>
                                     <div className='flex gap-x-3 w-full max-[600px]:flex-col '>
                                         <input
                                             value={val.title ? val.title : ''}
@@ -281,8 +281,8 @@ const Page = () => {
                                         />
                                     </div>
 
-                                    <button type='button' onClick={() => deleteLink(idx)}>
-                                        <img src="/delete.png" alt="delete" className='size-5 cursor-pointer max-[600px]:size-8' />
+                                    <button type='button' onClick={() => deleteLink(idx)} className='size-5 relative'>
+                                        <Image src="/delete.png" alt="delete" fill={true} className='cursor-pointer max-[600px]:size-8' />
                                     </button>
                                 </div>
                             )
