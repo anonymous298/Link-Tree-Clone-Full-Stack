@@ -163,7 +163,7 @@ const Page = () => {
                     />
                 </div>
 
-                <div className="w-[50%] bg-white shadow-lg rounded-2xl p-8 max-[1022px]:w-[85%]">
+                <div className="w-[50%] bg-white shadow-lg rounded-2xl p-8 max-[1022px]:w-[95%]">
                     <h2 className="text-2xl font-semibold mb-6 text-center">Create Your Linktree</h2>
 
                     <div className="space-y-5">
