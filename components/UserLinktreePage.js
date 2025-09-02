@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 
 const UserLinktreePage = ({ username }) => {
-    const { data: session } = useSession();
+    const { data: session, status  } = useSession();
     const router = useRouter()
     const [currentUser, setCurrentUser] = useState();
     const [socialLinks, setSocialLinks] = useState([])
@@ -18,7 +18,7 @@ const UserLinktreePage = ({ username }) => {
     console.log(currentUser)
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUser = async (username) => {
             const res = await fetch('/api/getuserdata', {
                 method: "POST",
                 headers: {
@@ -46,10 +46,10 @@ const UserLinktreePage = ({ username }) => {
         }
 
         else {
-            fetchUser()
+            fetchUser(username)
             // temp()
         }
-    }, [session])
+    }, [status, router])
 
     // console.log(session.user.image)
 
