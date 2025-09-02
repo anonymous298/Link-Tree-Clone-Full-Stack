@@ -7,13 +7,13 @@ import User from "@/models/User";
 export async function POST(request) {
     await connectDb()
 
-    const sendedEmail = await request.json()
+    const sendedUsername = await request.json()
 
     // const client = await clientPromise;
     // const db = client.db("linktree")
     // const collection = db.collection("users")
 
-    const currentUser = await User.findOne({email : sendedEmail.email})
+    const currentUser = await User.findOne({username : sendedUsername.username })
 
     return NextResponse.json(currentUser)
 }
