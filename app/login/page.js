@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Page() {
-    const {data : session} = useSession();
+    const {data : session, status } = useSession();
     const router = useRouter();
 
     useEffect(() => {
         if (session) {
             router.push('/dashboard')
         }
-    }, [session])
+    }, [status , router])
 
     return (
         <div className="flex items-center justify-center min-h-screen gap-10 px-6 max-[830px]:flex-col-reverse mt-20">
