@@ -11,6 +11,8 @@ export const updateUserData = async (data) => {
     const updatedData = { ...data };
     delete updatedData.user;
 
+    // console.log("updated data", updatedData)
+
     // ✅ Use findOneAndUpdate for simplicity
     const updatedUser = await User.findOneAndUpdate(
         { email: userEmail },
@@ -18,5 +20,5 @@ export const updateUserData = async (data) => {
         { new: true } // return updated document
     );
 
-    console.log(updatedUser)
+    // console.log(updatedUser)
 }
