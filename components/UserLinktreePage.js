@@ -57,23 +57,26 @@ const UserLinktreePage = ({ username }) => {
     return (
         <div className=' min-h-screen flex justify-center mt-20'>
             <div className="container w-[35%] flex items-center flex-col gap-y-10 max-[850px]:w-[60%] max-[500px]:w-[75%]">
-                <div className="profilepic rounded-full size-40 border-3 border-white relative max-[850px]:size-37 max-[500px]:size-30">
-                    {currentUser?.profilepic ? (
-                        <Image
+                <div className='flex flex-col items-center justify-center gap-y-2'>
+
+                    <div className="profilepic rounded-full size-40 border-3 border-white relative max-[850px]:size-37 max-[500px]:size-30">
+                        {currentUser?.profilepic ? (
+                            <Image
                             src={currentUser.profilepic}
                             fill={true}
                             alt="User profile picture"
                             className='rounded-full'
-                        />
-                    ) : (
-                        <p>No profile pic</p>
-                    )}
-                    {/* <img src={session.user.image} alt="profilPic" className='size-30 rounded-full object-cover' /> */}
+                            />
+                        ) : (
+                            <p>No profile pic</p>
+                        )}
+                        {/* <img src={session.user.image} alt="profilPic" className='size-30 rounded-full object-cover' /> */}
 
+                    </div>
+                    {/* <img src={session.user.image} alt="" /> */}
+                    
+                    <h2 className='text-white font-semibold font-mono text-[24px]'>@{username}</h2>
                 </div>
-                {/* <img src={session.user.image} alt="" /> */}
-                
-                <h2 className='text-white font-semibold font-mono'>@{username}</h2>
 
                 <div className="links-portion w-full text-center flex flex-col gap-y-2">
                     {socialLinks.map((val, idx) => {
