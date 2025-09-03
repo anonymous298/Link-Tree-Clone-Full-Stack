@@ -70,7 +70,7 @@ const UserLinktreePage = ({ username }) => {
                     )}
                     {/* <img src={session.user.image} alt="profilPic" className='size-30 rounded-full object-cover' /> */}
 
-                    <h2 className='text-white font-semibold font-mono'>{currentUser.username}</h2>
+                    <h2 className='text-white font-semibold font-mono'>{username}</h2>
                 </div>
                 {/* <img src={session.user.image} alt="" /> */}
 
