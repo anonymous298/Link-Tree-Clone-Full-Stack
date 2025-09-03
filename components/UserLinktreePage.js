@@ -70,9 +70,10 @@ const UserLinktreePage = ({ username }) => {
                     )}
                     {/* <img src={session.user.image} alt="profilPic" className='size-30 rounded-full object-cover' /> */}
 
-                    <h2 className='text-white font-semibold font-mono'>{username}</h2>
                 </div>
                 {/* <img src={session.user.image} alt="" /> */}
+                
+                <h2 className='text-white font-semibold font-mono'>@{username}</h2>
 
                 <div className="links-portion w-full text-center flex flex-col gap-y-2">
                     {socialLinks.map((val, idx) => {
